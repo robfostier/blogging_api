@@ -1,0 +1,20 @@
+{
+  "name": "blogging_api",
+  "version": "1.0.0",
+  "description": "Blogging API - Supinfo pAPIS3",
+  "license": "ISC",
+  "author": "Elisa Delaunay, Robinson Fostier",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev" : "node --watch src/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "http-status-codes": "^2.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.4.1"
+  }
+}
