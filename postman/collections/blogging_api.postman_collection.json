@@ -1,0 +1,23 @@
+{
+  "info": {
+    "_postman_id": "7a6b1bf6-dc39-479c-a4ca-c735250730bb",
+    "name": "blogging_api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51924973"
+  },
+  "item": [
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "api_user_register",
+          "request": {
+            "method": "POST",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
