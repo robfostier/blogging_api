@@ -13,7 +13,8 @@ export function validateObjectId(id) {
     }
 }
 
-export function validateUser({ username, email, password }) {
+export function validateUser(body) {
+    const { username, email, password } = body ?? {};
     const errors = [];
 
     if (!username || typeof username !== 'string' || username.trim() === '')

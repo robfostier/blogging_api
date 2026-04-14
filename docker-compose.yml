@@ -32,6 +32,8 @@ services:
       JWT_SECRET: ${JWT_SECRET}
     ports:
       - "${PORT:-3000}:3000"
+    volumes:
+      - ./api/src:/app/src
     depends_on:
       db:
         condition: service_healthy

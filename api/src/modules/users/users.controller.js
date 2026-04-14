@@ -3,7 +3,7 @@
 //! Calls the service layer when there is actual business logic.
 
 import User from './users.model.js';
-import { login } from './users.service.js';
+import { login as loginService } from './users.service.js';
 import { validateUser, validateObjectId } from './users.validation.js';
 import { StatusCodes, ReasonPhrases } from 'http-status-codes';
 
@@ -36,7 +36,8 @@ export async function remove(req, res, next) {
 
 export async function login(req, res, next) {
     try {
-        const token = await login(req.body);
+        validateUser(req.body);
+        const token = await loginService(req.body);
         res.status(StatusCodes.OK).json({ token });
     } catch (err) { next(err); }
 }
