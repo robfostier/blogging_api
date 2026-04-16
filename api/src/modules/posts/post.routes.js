@@ -1,5 +1,6 @@
 import express from 'express';
 import Post from './post.model.js';
+import Comment from '../comments/comment.model.js';
 
 const router = express.Router();
 
@@ -88,5 +89,30 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json({ message: "Erreur lors de la suppression de l'article", error: error.message });
     }
 });
+
+router.post('/:id/comments', async (req, res) => {
+    try {
+        const postId = req.params.id;
+
+        const postExists = await Post.findById(postId);
+        if (!postExists) {
+            return res.status(404).json({ message: "Impossible de commenter : l'article n'existe pas." });
+        }
+
+        const { commentText, author } = req.body;
+
+        const newComment = new Comment({
+            commentText: commentText,
+            author: author,
+            post: postId
+        });
+
+        const savedComment = await newComment.save();
+
+        res.status(201).json(savedComment);
+    } catch (error) {
+        res.status(400).json({ message: "Erreur lors de l'ajout du commentaire", error: error.message });
+    }
+})
 
 export default router;
