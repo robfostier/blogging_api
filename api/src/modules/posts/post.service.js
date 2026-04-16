@@ -6,11 +6,12 @@ export const createPost = async (postData) => {
 };
 
 export const getAllPosts = async (filter) => {
-    return await Post.find(filter).sort({ createdAt: -1 });
+    return await Post.find(filter).sort({ createdAt: -1 })
+    .populate('author', 'username');
 };
 
 export const getPostById = async (id) => {
-    return await Post.findById(id);
+    return await Post.findById(id).populate('author', 'username email');
 };
 
 export const updatePost = async (id, updateData) => {
