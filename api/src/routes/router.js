@@ -8,6 +8,8 @@ import { commentRoutes } from '../modules/comments/index.js';
 const router = Router();
 
 // Import and mount feature modules here
+import usersModule from '../modules/users/index.js';
+router.use(usersModule.path, usersModule.routes);
 router.use('/posts', postRoutes);
 router.use('/comments', commentRoutes);
 

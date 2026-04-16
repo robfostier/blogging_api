@@ -7,12 +7,47 @@
   },
   "item": [
     {
-      "name": "user",
+      "name": "users",
       "item": [
         {
-          "name": "api_user_register",
+          "name": "api_users_register",
           "request": {
             "method": "POST",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "api_users_login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api_users_detail",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "api_users_update",
+          "request": {
+            "method": "PUT",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "api_users_delete",
+          "request": {
+            "method": "DELETE",
             "header": []
           },
           "response": []

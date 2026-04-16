@@ -17,4 +17,14 @@ app.use((req, res) => {
     res.status(StatusCodes.NOT_FOUND).json({ message: ReasonPhrases.NOT_FOUND });
 });
 
+// Global error handler
+app.use((err, req, res, next) => {
+    const status = err.status ?? StatusCodes.INTERNAL_SERVER_ERROR;
+    const isClientError = status >= 400 && status < 500;
+    res.status(status).json({
+        message: isClientError ? err.message : ReasonPhrases.INTERNAL_SERVER_ERROR,
+        ...(isClientError && err.errors && { errors: err.errors }),
+    });
+});
+
 export default app;
