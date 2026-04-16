@@ -2,7 +2,7 @@
 //! Mounts each feature module on its own sub-path.
 
 import { Router } from 'express';
-import postRoutes from './modules/posts/post.routes.js';
+import { postRoutes } from '../modules/posts/index.js';
 
 const router = Router();
 
