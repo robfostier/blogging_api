@@ -1,9 +1,9 @@
 {
   "info": {
-    "_postman_id": "7a6b1bf6-dc39-479c-a4ca-c735250730bb",
+    "_postman_id": "e4bfbee9-fbf5-40e5-9342-ab7ce5d1a26a",
     "name": "blogging_api",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "51924973"
+    "_exporter_id": "45644544"
   },
   "item": [
     {
@@ -13,7 +13,30 @@
           "name": "api_users_register",
           "request": {
             "method": "POST",
-            "header": []
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"Elisa 2\",\r\n    \"email\": \"elisa@test.com\",\r\n    \"password\": \"qwe123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/users/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "register"
+              ]
+            }
           },
           "response": []
         },
@@ -22,8 +45,28 @@
           "request": {
             "method": "POST",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"Elisa\",\r\n    \"email\": \"elisa@blogify.com\",\r\n    \"password\": \"qwe123\" \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": ""
+              "raw": "http://localhost:3000/api/v1/users/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "login"
+              ]
             }
           },
           "response": []
@@ -32,7 +75,21 @@
           "name": "api_users_detail",
           "request": {
             "method": "GET",
-            "header": []
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/users/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "register"
+              ]
+            }
           },
           "response": []
         },
@@ -40,7 +97,10 @@
           "name": "api_users_update",
           "request": {
             "method": "PUT",
-            "header": []
+            "header": [],
+            "url": {
+              "raw": ""
+            }
           },
           "response": []
         },
@@ -48,7 +108,240 @@
           "name": "api_users_delete",
           "request": {
             "method": "DELETE",
-            "header": []
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Posts",
+      "item": [
+        {
+          "name": "api_post_create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Cet article sera delete\",\r\n    \"content\": \"Adieu !\",\r\n    \"author\": \"69e26480ca29d525c17809ee\",\r\n    \"tags\": [\"Dernier au revoir\", \"Suppression\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/posts",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "posts"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api_post_getAll",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/posts",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "posts"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api_post_getById",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/posts/69e265eaca29d525c17809f1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "posts",
+                "69e265eaca29d525c17809f1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api_post_update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Un article très intéressant (encore)\",\r\n    \"content\": \"C'est super Node.js (encore) ! (j'avais fais une faute de frappe, ça tombe bien\",\r\n    \"author\": \"69e26480ca29d525c17809ee\",\r\n    \"tags\": [\"Node.js\", \"Express\", \"Dev Web\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/posts/69e265eaca29d525c17809f1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "posts",
+                "69e265eaca29d525c17809f1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api_post_remove",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Un article très intéressant (encore)\",\r\n    \"content\": \"C'est super Node.js (encore) ! (j'avais fais une faute de frappe, ça tombe bien\",\r\n    \"author\": \"69e26480ca29d525c17809ee\",\r\n    \"tags\": [\"Node.js\", \"Express\", \"Dev Web\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/posts/69e26717ca29d525c17809f2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "posts",
+                "69e26717ca29d525c17809f2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Comments",
+      "item": [
+        {
+          "name": "api_comment_create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"commentText\": \"Je commente une 2eme fois !\",\r\n    \"author\": \"69e26480ca29d525c17809ee\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/posts/69e26480ca29d525c17809ee/comments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "posts",
+                "69e26480ca29d525c17809ee",
+                "comments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api_comment_update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"commentText\": \"Je modifie mon propre poste !\",\r\n    \"author\": \"69e26480ca29d525c17809ee\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/comments/69e267f1ca29d525c17809f4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "comments",
+                "69e267f1ca29d525c17809f4"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "api_comment_delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/comments/69e2679aca29d525c17809f3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "comments",
+                "69e2679aca29d525c17809f3"
+              ]
+            }
           },
           "response": []
         }
