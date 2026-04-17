@@ -1,4 +1,5 @@
 import * as postService from './post.service.js';
+import { validateObjectId, validatePost } from './post.validation.js';
 
 export const create = async (req, res) => {
     try {

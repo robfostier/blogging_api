@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { requireAuth } from '../middlewares/requireAuth.js';
+import { requireAuth } from '../../middlewares/requireAuth.js';
 import * as commentController from './comment.controller.js';
 
 const router = Router();

@@ -14,5 +14,5 @@ export const deleteComment = async (id) => {
 };
 
 export const getCommentsByPostId = async (postId) => {
-    return await Comment.find({ post: postId }).sort({ createdAt: -1 }).populate('author', 'username email');;
+    return await Comment.find({ post: postId }).sort({ createdAt: -1 }).populate('author', 'username email');
 };

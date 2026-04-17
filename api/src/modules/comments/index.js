@@ -1,3 +1,6 @@
-import commentRoutes from './comment.routes.js';
+import routes from './comment.routes.js';
 
-export { commentRoutes };
+export default {
+    path: '/comments',
+    routes,
+};

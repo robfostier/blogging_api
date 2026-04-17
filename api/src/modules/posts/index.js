@@ -1,3 +1,6 @@
-import postRoutes from './post.routes.js';
+import routes from './post.routes.js';
 
-export { postRoutes };
+export default {
+    path: '/posts',
+    routes,
+};
