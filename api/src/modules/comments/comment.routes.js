@@ -4,7 +4,9 @@
 
 import { Router } from 'express';
 import { requireAuth } from '../../middlewares/requireAuth.js';
+import { requireOwnership } from '../../middlewares/requireOwnership.js';
 import * as commentController from './comment.controller.js';
+import Comment from './comment.model.js';
 
 const router = Router();
 
@@ -80,7 +82,7 @@ nestedRouter.post('/', requireAuth, commentController.create);
  *       404:
  *         description: Commentaire introuvable
  */
-router.put('/:id', requireAuth, commentController.update);
+router.put('/:id', requireAuth, requireOwnership(Comment, 'author'), commentController.update);
 
 /**
  * @swagger
@@ -103,6 +105,6 @@ router.put('/:id', requireAuth, commentController.update);
  *       404:
  *         description: Commentaire introuvable
  */
-router.delete('/:id', requireAuth, commentController.remove);
+router.delete('/:id', requireAuth, requireOwnership(Comment, 'author'), commentController.remove);
 
 export { router, nestedRouter };

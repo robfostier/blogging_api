@@ -4,7 +4,9 @@
 
 import { Router } from 'express';
 import { requireAuth } from '../../middlewares/requireAuth.js';
+import { requireOwnership } from '../../middlewares/requireOwnership.js';
 import * as usersController from './users.controller.js';
+import User from './users.model.js';
 
 const router = Router();
 
@@ -38,6 +40,8 @@ const router = Router();
  *     responses:
  *       201:
  *         description: Compte créé avec succès
+ *       409:
+ *         description: Username ou email déjà utilisé
  *       422:
  *         description: Données invalides
  */
@@ -127,7 +131,7 @@ router.get('/:id', usersController.detail);
  *       404:
  *         description: Utilisateur introuvable
  */
-router.put('/:id', requireAuth, usersController.update);
+router.put('/:id', requireAuth, requireOwnership(User, '_id'), usersController.update);
 
 /**
  * @swagger
@@ -152,6 +156,6 @@ router.put('/:id', requireAuth, usersController.update);
  *       404:
  *         description: Utilisateur introuvable
  */
-router.delete('/:id', requireAuth, usersController.remove);
+router.delete('/:id', requireAuth, requireOwnership(User, '_id'), usersController.remove);
 
 export default router;

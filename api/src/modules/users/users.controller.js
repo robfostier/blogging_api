@@ -54,5 +54,11 @@ export async function register(req, res, next) {
         const user = new User(req.body);
         await user.save();
         res.status(StatusCodes.CREATED).json(user);
-    } catch (err) { next(err); }
+    } catch (err) {
+        if (err.code === 11000) {
+            const field = Object.keys(err.keyPattern)[0];
+            return res.status(StatusCodes.CONFLICT).json({ message: `${field} already taken` });
+        }
+        next(err);
+    }
 }
