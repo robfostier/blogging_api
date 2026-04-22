@@ -31,3 +31,20 @@ export function validateUser(body) {
         throw err;
     }
 }
+
+export function validateLogin(body) {
+    const { email, password } = body ?? {};
+    const errors = [];
+
+    if (!email || typeof email !== 'string' || email.trim() === '')
+        errors.push('email is required');
+    if (!password || typeof password !== 'string' || password.trim() === '')
+        errors.push('password is required');
+
+    if (errors.length > 0) {
+        const err = new Error('Validation failed');
+        err.status = StatusCodes.UNPROCESSABLE_ENTITY;
+        err.errors = errors;
+        throw err;
+    }
+}

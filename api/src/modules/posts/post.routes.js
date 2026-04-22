@@ -1,7 +1,10 @@
+//! HTTP routes for posts module
+//! Declares all routes of this module and wires them to the controller.
+//! This router is exported and mounted by the global router (routes/router.js).
+
 import { Router } from 'express';
 import { requireAuth } from '../../middlewares/requireAuth.js';
 import * as postController from './post.controller.js';
-import * as commentController from '../comments/comment.controller.js';
 
 const router = Router();
 
@@ -137,37 +140,5 @@ router.put('/:id', requireAuth, postController.update);
  *         description: Article introuvable
  */
 router.delete('/:id', requireAuth, postController.remove);
-
-/**
- * @swagger
- * /posts/{id}/comments:
- *   post:
- *     summary: Ajouter un commentaire à un article
- *     tags: [Comments]
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: L'ID de l'article commenté
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               commentText:
- *                 type: string
- *               author:
- *                 type: string
- *     responses:
- *       201:
- *         description: Commentaire créé avec succès
- */
-router.post('/:id/comments', requireAuth, commentController.create);
 
 export default router;

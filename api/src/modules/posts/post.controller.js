@@ -1,3 +1,7 @@
+//! req/res handlers for posts routes
+//! Handles HTTP request/response logic. Each function maps to one route.
+//! Calls the service layer when there is actual business logic.
+
 import * as postService from './post.service.js';
 import { validateObjectId, validatePost } from './post.validation.js';
 

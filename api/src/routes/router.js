@@ -5,12 +5,13 @@ import { Router } from 'express';
 import usersModule from '../modules/users/index.js';
 import postsModule from '../modules/posts/index.js';
 import commentsModule from '../modules/comments/index.js';
+import likesModule from '../modules/likes/index.js';
 
 const router = Router();
 
-// Import and mount feature modules here
-router.use(usersModule.path, usersModule.routes);
-router.use(postsModule.path, postsModule.routes);
-router.use(commentsModule.path, commentsModule.routes);
+for (const { path, routes } of usersModule)    router.use(path, routes);
+for (const { path, routes } of postsModule)    router.use(path, routes);
+for (const { path, routes } of commentsModule) router.use(path, routes);
+for (const { path, routes } of likesModule)    router.use(path, routes);
 
 export default router;

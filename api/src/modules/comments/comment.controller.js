@@ -1,3 +1,7 @@
+//! req/res handlers for comments routes
+//! Handles HTTP request/response logic. Each function maps to one route.
+//! Calls the service layer when there is actual business logic.
+
 import * as commentService from './comment.service.js';
 import { validateComment } from './comment.validation.js';
 

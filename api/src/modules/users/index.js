@@ -4,7 +4,6 @@
 
 import routes from './users.routes.js';
 
-export default {
-    path: '/users',
-    routes,
-};
+export default [
+    { path: '/users', routes },
+];

@@ -1,3 +1,6 @@
+//! Input validation for comments routes
+//! Validates request bodies and params before they reach the controller.
+
 import mongoose from 'mongoose';
 import { StatusCodes } from 'http-status-codes';
 

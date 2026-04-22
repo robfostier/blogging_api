@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "mongoose": "^9.4.1",
-    "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1"
-  }
-}
