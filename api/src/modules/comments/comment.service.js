@@ -1,3 +1,7 @@
+//! Business logic for comments routes
+//! All database queries go here. Controllers call these functions
+//! and never interact with the model directly.
+
 import Comment from './comment.model.js';
 
 export const createComment = async (commentData) => {

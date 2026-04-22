@@ -40,7 +40,7 @@ const swaggerOptions = {
 };
 
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Routes
 app.use('/api/v1', router);
@@ -52,6 +52,7 @@ app.use((req, res) => {
 
 // Global error handler
 app.use((err, req, res, next) => {
+    console.error('[ERROR]', err);
     const status = err.status ?? StatusCodes.INTERNAL_SERVER_ERROR;
     const isClientError = status >= 400 && status < 500;
     res.status(status).json({

@@ -1,7 +1,12 @@
+//! HTTP routes for posts module
+//! Declares all routes of this module and wires them to the controller.
+//! This router is exported and mounted by the global router (routes/router.js).
+
 import { Router } from 'express';
 import { requireAuth } from '../../middlewares/requireAuth.js';
+import { requireOwnership } from '../../middlewares/requireOwnership.js';
 import * as postController from './post.controller.js';
-import * as commentController from '../comments/comment.controller.js';
+import Post from './post.model.js';
 
 const router = Router();
 
@@ -113,7 +118,7 @@ router.get('/:id', postController.getById);
  *       404:
  *         description: Article introuvable
  */
-router.put('/:id', requireAuth, postController.update);
+router.put('/:id', requireAuth, requireOwnership(Post, 'author'), postController.update);
 
 /**
  * @swagger
@@ -136,38 +141,6 @@ router.put('/:id', requireAuth, postController.update);
  *       404:
  *         description: Article introuvable
  */
-router.delete('/:id', requireAuth, postController.remove);
-
-/**
- * @swagger
- * /posts/{id}/comments:
- *   post:
- *     summary: Ajouter un commentaire à un article
- *     tags: [Comments]
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: L'ID de l'article commenté
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               commentText:
- *                 type: string
- *               author:
- *                 type: string
- *     responses:
- *       201:
- *         description: Commentaire créé avec succès
- */
-router.post('/:id/comments', requireAuth, commentController.create);
+router.delete('/:id', requireAuth, requireOwnership(Post, 'author'), postController.remove);
 
 export default router;

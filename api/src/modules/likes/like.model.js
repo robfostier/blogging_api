@@ -1,27 +1,23 @@
-//! DB model for comments
+//! DB model for likes
 //! Defines the schema (fields, types, constraints) and exports the model.
 //! This is the only place that interacts directly with the MongoDB collection.
 
 import mongoose from 'mongoose';
 
-const commentSchema = new mongoose.Schema({
-    commentText: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    author: {
+const likeSchema = new mongoose.Schema({
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true
+        required: true,
     },
     post: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Post',
-        required: true
-    }
-}, {
-    timestamps: true
-});
+        required: true,
+    },
+}, { timestamps: true });
 
-export default mongoose.model('Comment', commentSchema);
+// A user can like a post only once
+likeSchema.index({ user: 1, post: 1 }, { unique: true });
+
+export default mongoose.model('Like', likeSchema);

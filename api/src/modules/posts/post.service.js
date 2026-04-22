@@ -1,3 +1,7 @@
+//! Business logic for posts routes
+//! All database queries go here. Controllers call these functions
+//! and never interact with the model directly.
+
 import Post from './post.model.js';
 
 export const createPost = async (postData) => {
