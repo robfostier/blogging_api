@@ -2,7 +2,7 @@
 //! Handles HTTP request/response logic. Each function maps to one route.
 //! Calls the service layer when there is actual business logic.
 
-import * as likeService from './like.service.js';
+import * as likeService from './likes.service.js';
 import { StatusCodes } from 'http-status-codes';
 
 export const like = async (req, res, next) => {

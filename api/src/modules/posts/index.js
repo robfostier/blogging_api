@@ -2,7 +2,7 @@
 //! Re-exports the router so the global router only needs
 //! to import from this single entry point.
 
-import routes from './post.routes.js';
+import routes from './posts.routes.js';
 
 export default [
     { path: '/posts', routes },

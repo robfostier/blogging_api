@@ -5,8 +5,9 @@
 import { Router } from 'express';
 import { requireAuth } from '../../middlewares/requireAuth.js';
 import { requireOwnership } from '../../middlewares/requireOwnership.js';
-import * as postController from './post.controller.js';
-import Post from './post.model.js';
+import { validateId } from '../../middlewares/validateId.js';
+import * as postController from './posts.controller.js';
+import Post from './posts.model.js';
 
 const router = Router();
 
@@ -80,7 +81,7 @@ router.get('/', postController.getAll);
  *       404:
  *         description: Article introuvable
  */
-router.get('/:id', postController.getById);
+router.get('/:id', validateId(), postController.getById);
 
 /**
  * @swagger
@@ -118,7 +119,7 @@ router.get('/:id', postController.getById);
  *       404:
  *         description: Article introuvable
  */
-router.put('/:id', requireAuth, requireOwnership(Post, 'author'), postController.update);
+router.put('/:id', validateId(), requireAuth, requireOwnership(Post, 'author'), postController.update);
 
 /**
  * @swagger
@@ -141,6 +142,6 @@ router.put('/:id', requireAuth, requireOwnership(Post, 'author'), postController
  *       404:
  *         description: Article introuvable
  */
-router.delete('/:id', requireAuth, requireOwnership(Post, 'author'), postController.remove);
+router.delete('/:id', validateId(), requireAuth, requireOwnership(Post, 'author'), postController.remove);
 
 export default router;

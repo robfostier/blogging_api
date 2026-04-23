@@ -2,7 +2,7 @@
 //! All database queries go here. Controllers call these functions
 //! and never interact with the model directly.
 
-import Comment from './comment.model.js';
+import Comment from './comments.model.js';
 
 export const createComment = async (commentData) => {
     const newComment = new Comment(commentData);

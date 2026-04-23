@@ -2,7 +2,7 @@
 //! Re-exports the routers so the global router only needs
 //! to import from this single entry point.
 
-import { router, nestedRouter } from './comment.routes.js';
+import { router, nestedRouter } from './comments.routes.js';
 
 export default [
     { path: '/comments',           routes: router },

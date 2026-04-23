@@ -2,7 +2,7 @@
 //! All database queries go here. Controllers call these functions
 //! and never interact with the model directly.
 
-import Post from './post.model.js';
+import Post from './posts.model.js';
 
 export const createPost = async (postData) => {
     const newPost = new Post(postData);
