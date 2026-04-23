@@ -5,6 +5,7 @@ import { StatusCodes, ReasonPhrases } from 'http-status-codes';
 import router from './routes/router.js';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';
+import appState from './config/appState.js';
 
 const app = express();
 
@@ -22,7 +23,7 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: 'http://localhost:3000/api/v1',
+                url: `http://localhost:${appState.config.PORT}/api/v1`,
                 description: 'Serveur local',
             },
         ],
