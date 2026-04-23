@@ -2,7 +2,7 @@
 //! All database queries go here. Controllers call these functions
 //! and never interact with the model directly.
 
-import Like from './like.model.js';
+import Like from './likes.model.js';
 
 export const likePost = async (userId, postId) => {
     const like = new Like({ user: userId, post: postId });

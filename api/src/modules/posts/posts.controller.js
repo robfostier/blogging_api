@@ -2,8 +2,8 @@
 //! Handles HTTP request/response logic. Each function maps to one route.
 //! Calls the service layer when there is actual business logic.
 
-import * as postService from './post.service.js';
-import { validateObjectId, validatePost } from './post.validation.js';
+import * as postService from './posts.service.js';
+import { validatePost } from './posts.validation.js';
 
 export const create = async (req, res) => {
     try {
@@ -31,7 +31,6 @@ export const getAll = async (req, res) => {
 
 export const getById = async (req, res) => {
     try {
-        validateObjectId(req.params.id);
         const post = await postService.getPostById(req.params.id);
         if (!post) return res.status(404).json({ message: "Article introuvable" });
         res.status(200).json(post);
@@ -42,7 +41,6 @@ export const getById = async (req, res) => {
 
 export const update = async (req, res) => {
     try {
-        validateObjectId(req.params.id);
         const updatedPost = await postService.updatePost(req.params.id, req.body);
         if (!updatedPost) return res.status(404).json({ message: "Article introuvable" });
         res.status(200).json(updatedPost);
@@ -53,7 +51,6 @@ export const update = async (req, res) => {
 
 export const remove = async (req, res) => {
     try {
-        validateObjectId(req.params.id);
         const deletedPost = await postService.deletePost(req.params.id);
         if (!deletedPost) return res.status(404).json({ message: "Article introuvable" });
         res.status(200).json({ message: "Article supprimé avec succès" });

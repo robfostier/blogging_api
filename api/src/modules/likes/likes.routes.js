@@ -4,7 +4,8 @@
 
 import { Router } from 'express';
 import { requireAuth } from '../../middlewares/requireAuth.js';
-import * as likeController from './like.controller.js';
+import { validateId } from '../../middlewares/validateId.js';
+import * as likeController from './likes.controller.js';
 
 const router = Router({ mergeParams: true });
 
@@ -35,7 +36,7 @@ const router = Router({ mergeParams: true });
  *       409:
  *         description: Article déjà liké
  */
-router.post('/', requireAuth, likeController.like);
+router.post('/', validateId(), requireAuth, likeController.like);
 
 /**
  * @swagger
@@ -55,7 +56,7 @@ router.post('/', requireAuth, likeController.like);
  *       204:
  *         description: Like retiré avec succès
  */
-router.delete('/', requireAuth, likeController.unlike);
+router.delete('/', validateId(), requireAuth, likeController.unlike);
 
 /**
  * @swagger
@@ -73,6 +74,6 @@ router.delete('/', requireAuth, likeController.unlike);
  *       200:
  *         description: Nombre et liste des likes
  */
-router.get('/', likeController.getLikes);
+router.get('/', validateId(), likeController.getLikes);
 
 export default router;

@@ -5,6 +5,7 @@
 import { Router } from 'express';
 import { requireAuth } from '../../middlewares/requireAuth.js';
 import { requireOwnership } from '../../middlewares/requireOwnership.js';
+import { validateId } from '../../middlewares/validateId.js';
 import * as usersController from './users.controller.js';
 import User from './users.model.js';
 
@@ -92,7 +93,7 @@ router.post('/login', usersController.login);
  *       404:
  *         description: Utilisateur introuvable
  */
-router.get('/:id', usersController.detail);
+router.get('/:id', validateId(), usersController.detail);
 
 /**
  * @swagger
@@ -131,7 +132,7 @@ router.get('/:id', usersController.detail);
  *       404:
  *         description: Utilisateur introuvable
  */
-router.put('/:id', requireAuth, requireOwnership(User, '_id'), usersController.update);
+router.put('/:id', validateId(), requireAuth, requireOwnership(User, '_id'), usersController.update);
 
 /**
  * @swagger
@@ -156,6 +157,6 @@ router.put('/:id', requireAuth, requireOwnership(User, '_id'), usersController.u
  *       404:
  *         description: Utilisateur introuvable
  */
-router.delete('/:id', requireAuth, requireOwnership(User, '_id'), usersController.remove);
+router.delete('/:id', validateId(), requireAuth, requireOwnership(User, '_id'), usersController.remove);
 
 export default router;

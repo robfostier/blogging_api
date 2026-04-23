@@ -4,12 +4,11 @@
 
 import User from './users.model.js';
 import { login as loginService } from './users.service.js';
-import { validateUser, validateLogin, validateObjectId } from './users.validation.js';
+import { validateUser, validateLogin } from './users.validation.js';
 import { StatusCodes, ReasonPhrases } from 'http-status-codes';
 
 export async function detail(req, res, next) {
     try {
-        validateObjectId(req.params.id);
         const user = await User.findOne({ _id: req.params.id, status: 'active' });
         if (!user) return res.status(StatusCodes.NOT_FOUND).json({ message: ReasonPhrases.NOT_FOUND });
         res.status(StatusCodes.OK).json(user);
@@ -18,7 +17,6 @@ export async function detail(req, res, next) {
 
 export async function update(req, res, next) {
     try {
-        validateObjectId(req.params.id);
         validateUser(req.body);
         const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!user) return res.status(StatusCodes.NOT_FOUND).json({ message: ReasonPhrases.NOT_FOUND });
@@ -28,7 +26,6 @@ export async function update(req, res, next) {
 
 export async function remove(req, res, next) {
     try {
-        validateObjectId(req.params.id);
         // Soft-delete by setting status to 'deleted'
         const user = await User.findByIdAndUpdate(
             req.params.id,
